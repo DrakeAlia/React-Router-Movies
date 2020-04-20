@@ -2,10 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Home(props) {
-
-}
-return routerHome;
-
+  console.log('Home', props)
+  const routeHome = () => {
+  this.props.history.push('/');
+  }
+return routeHome;
+};
 
 const SavedList = props => (
   <div className="saved-list">
@@ -13,7 +15,7 @@ const SavedList = props => (
     {props.list.map(movie => (
       <span className="saved-movie">{movie.title}</span>
     ))}
-    <div className="home-button">Home</div>
+    <Link to='/'> <button onClick={Home} className ='home-button'></button></Link>
   </div>
 );
 
