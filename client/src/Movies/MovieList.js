@@ -7,10 +7,9 @@ const MovieList = props => {
   useEffect(() => {
     const getMovies = () => {
       axios
-        .get('http://localhost:3000/api/movies')
+        .get('http://localhost:5000/api/movies')
         .then(response => {
           setMovies(response.data);
-          console.log(response)
         })
         .catch(error => {
           console.error('Server Error', error);
@@ -23,19 +22,16 @@ const MovieList = props => {
   return (
     <div className="movie-list">
       {movies.map(movie => (
-      //  <MovieDetails key={movie.id} movie={movie} />
-      <Link to={`/movies/${movie.id}`}>
-         <MovieDetails key={movie.id} movie={movie} />
-       </Link>
+        <MovieDetails key={movie.id} movie={movie} />
       ))}
     </div>
   );
 }
 
 function MovieDetails({ movie }) {
-  const { title, director, metascore, stars, id } = movie;
+  const { title, director, metascore, stars } = movie;
   return (
-    <Link to = {`/movies/${id}`}>
+    <Link to={`/movies/${movie.id}`}>
     <div className="movie-card">
       <h2>{title}</h2>
       <div className="movie-director">
